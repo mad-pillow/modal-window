@@ -1,8 +1,8 @@
 document.addEventListener("DOMContentLoaded", () => {
-  const openModalBtns = document.querySelectorAll("[data-openModalBtn]"),
-    modalWindow = document.querySelector("[data-modalWindow]"),
-    closeModalBtn = document.querySelector("[data-closeModalBtn]"),
-    modalWindowBlock = modalWindow.querySelector("[data-modalWindowBlock]");
+  const openModalBtns = document.querySelectorAll("[data-openModalBtn]");
+  const modalWindow = document.querySelector("[data-modalWindow]");
+  const closeModalBtn = document.querySelector("[data-closeModalBtn]");
+  const modalWindowBlock = modalWindow.querySelector("[data-modalWindowBlock]");
 
   function toggleModalWindow() {
     if (modalWindow) {
@@ -23,15 +23,15 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   openModalBtns.forEach((item) => {
-    item.addEventListener("click", (ev) => {
-      ev.preventDefault();
+    item.addEventListener("click", (e) => {
+      e.preventDefault();
       toggleModalWindow();
     });
   });
 
-  window.addEventListener("click", (ev) => {
-    if (ev.target === modalWindow || ev.target === closeModalBtn) {
-      ev.preventDefault();
+  modalWindow.addEventListener("click", (e) => {
+    if (e.target === modalWindow || e.target === closeModalBtn) {
+      e.preventDefault();
       toggleModalWindow();
     }
   });
